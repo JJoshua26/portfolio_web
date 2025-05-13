@@ -111,10 +111,36 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             // Here you would typically send the form data to a server
-            // For demonstration, we'll just show an alert
             alert('Thank you for your message! I will get back to you soon.');
             this.reset();
         });
     }
+
+// Hamburger menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.querySelector('.nav');
+    const menuItems = document.querySelectorAll('.menu-item');
+    
+    // Toggle menu open/close when hamburger is clicked
+    menuBtn.addEventListener('click', function() {
+        menuBtn.classList.toggle('open');
+        nav.classList.toggle('active');
+    });
+    
+    // Close menu when a menu item is clicked
+    menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+            menuBtn.classList.remove('open');
+            nav.classList.remove('active');
+            
+            // Remove active class from all menu items
+            menuItems.forEach(i => i.classList.remove('active'));
+            
+            // Add active class to clicked menu item
+            this.classList.add('active');
+        });
+    });
+});
 
 });
